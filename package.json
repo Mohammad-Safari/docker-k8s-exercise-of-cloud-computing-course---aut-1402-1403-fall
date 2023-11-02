@@ -1,0 +1,29 @@
+{
+  "name": "weather-service-api",
+  "version": "0.1.0",
+  "description": "service for weather and temperature retreival",
+  "scripts": {
+    "watch": "tsc --watch --preserveWatchOutput --pretty",
+    "dev": "cross-env NODE_ENV=development nodemon",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "build": "rimraf dist && tsc",
+    "start": "node dist/index.js"
+  },
+  "author": "sfrimhmd",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/redis": "6.1.1",
+    "dotenv": "16.3.1",
+    "fastify": "4.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.8.4",
+    "cross-env": "7.0.3",
+    "fastify-tsconfig": "2.0.0",
+    "nodemon": "3.0.1",
+    "prettier": "3.0.3",
+    "rimraf": "5.0.5",
+    "tsconfig-paths": "4.2.0",
+    "typescript": "5.2.2"
+  }
+}
