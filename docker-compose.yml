@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  api:
+    container_name: weather-api
+    image: mhmdsfri/weather-api:0.1.1
+    # 
+    # build:
+    #   context: .
+    #   dockerfile: dockerfile
+
+    # not necessary
+    # networks:
+    #   - weather-service
+    ports:
+      - '3000:3000'
+    volumes:
+      - .env:/app/.env
+    depends_on:
+      - redis
+
+  redis:
+    container_name: redis-cache
+    image: redis:7
+    restart: always
+
+    # not necessary
+    # networks:
+    #   - weather-service
+    ports:
+      - '6379:6379'
+    volumes: 
+      - redis:/data
+
+volumes:
+  redis:
+    driver: local
+
+networks:
+  weather-service:
+    driver: bridge
+    
