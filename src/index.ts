@@ -15,7 +15,7 @@ const start = async () => {
   try {
     setupRedis(fastify);
     setupRoutes(fastify);
-    fastify.listen({ port: API_PORT });
+    fastify.listen({ host: "0.0.0.0", port: API_PORT });
     await fastify.ready();
   } catch (err) {
     fastify.log.error(err);

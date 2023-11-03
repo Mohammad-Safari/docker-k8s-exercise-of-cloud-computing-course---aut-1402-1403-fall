@@ -1,6 +1,6 @@
 {
   "name": "weather-service-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "service for weather and temperature retreival",
   "scripts": {
     "watch": "tsc --watch --preserveWatchOutput --pretty",
