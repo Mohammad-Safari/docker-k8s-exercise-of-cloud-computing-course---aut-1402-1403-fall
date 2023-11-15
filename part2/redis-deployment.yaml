@@ -19,7 +19,14 @@ spec:
           image: redis:7
           ports:
             - containerPort: 6379
+          volumeMounts:
+            - mountPath: "/data"
+              name: data-volume
           resources:
             limits:
               cpu: 500m
               memory: 500Mi
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: redis-pvc
