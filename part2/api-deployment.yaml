@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-api-deployment
+  labels:
+    app: weather-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather-api
+  template:
+    metadata:
+      labels:
+        app: weather-api
+    spec:
+      containers:
+        - name: weather-api
+          image: mhmdsfri/weather-api:0.1.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          lifecycle:
+            preStop:
+              exec:
+                command: [ "sleep", "30" ]
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500Mi
+          volumeMounts:
+              - mountPath: /app/.env
+                subPath: .env
+                name: api-config
+                readOnly: true
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: api-config
+          configMap:
+            name: my-api-config-map

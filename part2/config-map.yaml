@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-api-config-map
+data:
+  .env: |-
+    API_PORT=3000
+    CACHE_KEY_EXPIRATION=300
+
+    WEATHER_API_ENDPOINT=http://api.weatherapi.com/v1
+    WEATHER_API_KEY=236cc85f7acb4521bf2130937230211
+
+    REDIS_ADDRESS=redis-service
+    REDIS_PORT=6379
+    REDIS_PASS=
